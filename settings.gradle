@@ -1,0 +1,3 @@
+rootProject.name = 'my_SpringMVC'
+include('framework')
+include('application')
