@@ -8,9 +8,9 @@ import slf.xbb.starter.MyApplication;
  * @modifiedBy：
  * @version:
  */
-public class Application {
+public class ApplicationTest {
     public static void main(String[] args) {
         System.out.println("Hello world");
-        MyApplication.run(Application.class, args);
+        MyApplication.run(ApplicationTest.class, args);
     }
 }

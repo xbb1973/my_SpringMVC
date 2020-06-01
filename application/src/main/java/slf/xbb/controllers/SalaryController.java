@@ -13,10 +13,14 @@ import slf.xbb.web.mvc.RequestParam;
  */
 @Controller
 public class SalaryController {
-    @RequestMapping("/salary/get")
+    @RequestMapping("/test1")
     public String getSalary(@RequestParam("name") String name,
-                             @RequestParam("exp") String exp) {
+                            @RequestParam("exp") String exp) {
 
         return name + exp;
+    }
+    @RequestMapping("/test2")
+    public Integer test2() {
+        return 1000;
     }
 }

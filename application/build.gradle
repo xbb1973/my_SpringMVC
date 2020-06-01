@@ -13,18 +13,16 @@ repositories {
 
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
-//    implementation project(':framework')
-    compile project(':framework')
-//    compile(project(':framework'))
+    compile(project(':framework'))
 }
 
 jar {
     manifest {
-        attributes('Main-Class': 'slf.xbb.Application')
+        attributes('Main-Class': 'slf.xbb.ApplicationTest')
     }
-//    from {
-//        configurations.compile.collect {
-//            it.isDirectory() ? it : zipTree(it)
-//        }
-//    }
+    from {
+        configurations.compile.collect {
+            it.isDirectory() ? it : zipTree(it)
+        }
+    }
 }

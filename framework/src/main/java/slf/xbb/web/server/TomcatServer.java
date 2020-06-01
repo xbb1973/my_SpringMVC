@@ -5,7 +5,6 @@ import org.apache.catalina.LifecycleException;
 import org.apache.catalina.core.StandardContext;
 import org.apache.catalina.startup.Tomcat;
 import slf.xbb.web.servlet.DispatcherServlet;
-import slf.xbb.web.servlet.TestServlet;
 
 /**
  * @author ：xbb
@@ -35,7 +34,7 @@ public class TomcatServer {
         // 注册Servlet
         Tomcat.addServlet(context, "dispacherServlet", dispacherServlet)
                 .setAsyncSupported(true);
-        context.addServletMappingDecoded("/test", "dispacherServlet");
+        context.addServletMappingDecoded("/", "dispacherServlet");
         tomcat.getHost().addChild(context);
 
         Thread awaitThread = new Thread(() -> {
