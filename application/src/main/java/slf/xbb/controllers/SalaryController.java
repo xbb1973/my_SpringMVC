@@ -1,5 +1,7 @@
 package slf.xbb.controllers;
 
+import slf.xbb.beans.AutoWired;
+import slf.xbb.service.SalaryService;
 import slf.xbb.web.mvc.Controller;
 import slf.xbb.web.mvc.RequestMapping;
 import slf.xbb.web.mvc.RequestParam;
@@ -13,6 +15,10 @@ import slf.xbb.web.mvc.RequestParam;
  */
 @Controller
 public class SalaryController {
+
+    @AutoWired
+    SalaryService salaryService;
+
     @RequestMapping("/test1")
     public String getSalary(@RequestParam("name") String name,
                             @RequestParam("exp") String exp) {
@@ -21,6 +27,6 @@ public class SalaryController {
     }
     @RequestMapping("/test2")
     public Integer test2() {
-        return 1000;
+        return salaryService.getSalary();
     }
 }

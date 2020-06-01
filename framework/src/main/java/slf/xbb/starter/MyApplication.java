@@ -1,6 +1,7 @@
 package slf.xbb.starter;
 
 import org.apache.catalina.LifecycleException;
+import slf.xbb.beans.BeanFactory;
 import slf.xbb.core.ClassScanner;
 import slf.xbb.web.handler.HandlerManager;
 import slf.xbb.web.server.TomcatServer;
@@ -22,9 +23,12 @@ public class MyApplication {
         try {
             tomcatServer.startServer();
             List<Class<?>> classList = ClassScanner.scanClasses(clazz.getPackage().getName());
+            BeanFactory.initBean(classList);
             HandlerManager.resolveMappingHandler(classList);
             classList.forEach(System.out::println);
         } catch (LifecycleException | IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
             e.printStackTrace();
         } finally {
 

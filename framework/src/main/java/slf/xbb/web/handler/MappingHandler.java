@@ -1,5 +1,7 @@
 package slf.xbb.web.handler;
 
+import slf.xbb.beans.BeanFactory;
+
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
@@ -17,13 +19,13 @@ import java.lang.reflect.Method;
 public class MappingHandler {
     private String uri;
     private Method method;
-    private Class<?> controller;
+    private Class<?> controllerClass;
     private String[] args;
 
     MappingHandler(String uri, Method method, Class<?> clazz, String[] args) {
         this.uri = uri;
         this.method = method;
-        this.controller = clazz;
+        this.controllerClass = clazz;
         this.args = args;
     }
 
@@ -36,7 +38,8 @@ public class MappingHandler {
         for (int i = 0; i < args.length; i++) {
             parameters[i] = req.getParameter(args[i]);
         }
-        Object ctrlInstance = controller.newInstance();
+        // Object ctrlInstance = controller.newInstance();
+        Object ctrlInstance = BeanFactory.getBean(controllerClass);
         Object result = method.invoke(ctrlInstance, parameters);
         res.getWriter().println(result.toString());
         return true;
